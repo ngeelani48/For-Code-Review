@@ -18,8 +18,8 @@ let Tasks = getLocalStorage();
 
 FnToDoList(Tasks);
 
-input.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter' && input.value !== '') {
+input.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter' && input.value !== '') {
     addTask(Tasks, input.value);
     input.value = '';
     updateLocalStorage(Tasks);
@@ -36,9 +36,9 @@ addTaskBtn.addEventListener('click', () => {
   }
 });
 
-List.addEventListener('click', (e) => {
-  if (e.target.closest('.list-li-checkbox')) {
-    markTask(e, Tasks);
+List.addEventListener('click', (event) => {
+  if (event.target.closest('.list-li-checkbox')) {
+    markTask(event, Tasks);
   }
   updateLocalStorage(Tasks);
   FnToDoList(Tasks);
@@ -50,14 +50,14 @@ clearCompletedBtn.addEventListener('click', () => {
   FnToDoList(Tasks);
 });
 
-List.addEventListener('dblclick', (e) => {
-  if (e.target.closest('.list-li-text')) {
-    editTask(e, Tasks);
+List.addEventListener('dblclick', (event) => {
+  if (event.target.closest('.list-li-text')) {
+    editTask(event, Tasks);
   }
 });
 
-List.addEventListener('click', (e) => {
-  if (e.target.closest('.cross-sign')) {
-    deleteTask(e, Tasks);
+List.addEventListener('click', (event) => {
+  if (event.target.closest('.cross-sign')) {
+    deleteTask(event, Tasks);
   }
 });

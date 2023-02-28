@@ -33,14 +33,14 @@ export const addTask = (ListArray, task) => {
   ListArray.push({ task, completed: false, id: ListArray.length + 1 });
 };
 
-export const editTask = (e, ListArray) => {
-  const clickedTask = e.target.closest('.list-li-text');
+export const editTask = (event, ListArray) => {
+  const clickedTask = event.target.closest('.list-li-text');
   clickedTask.disabled = false;
   clickedTask.focus();
   const taskText = clickedTask.value;
 
-  clickedTask.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter' && clickedTask.value !== '') {
+  clickedTask.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter' && clickedTask.value !== '') {
       const taskIndex = ListArray.findIndex((task) => task.task === taskText);
       ListArray[taskIndex].task = clickedTask.value;
       clickedTask.disabled = true;
@@ -50,8 +50,8 @@ export const editTask = (e, ListArray) => {
   });
 };
 
-export const deleteTask = (e, ListArray) => {
-  const clickedCross = e.target.closest('.cross-sign');
+export const deleteTask = (event, ListArray) => {
+  const clickedCross = event.target.closest('.cross-sign');
   const clickedTask = clickedCross.previousElementSibling;
   const taskIndex = ListArray.findIndex((task) => task.task === clickedTask.value);
   ListArray.splice(taskIndex, 1);
